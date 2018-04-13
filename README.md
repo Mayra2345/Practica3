@@ -1,5 +1,5 @@
-# Practica3
-Practica 3 "Arduino y LCD con Conexion Serial"
+**# Practica3
+Practica 3 "Arduino y LCD con Conexion Serial"**
 
 Arduino, es una poderosa plataforma de hardware libre, ideal para poyectos de electrónica que van desde el encendido de un
 LED hasta un complejo sistema de domótica para controlar una casa entera.
@@ -10,8 +10,9 @@ META :En Arduino con un LCD desplegar:
   +La temperatura
   + La hora
   + Mensajes
+
 El usuario podra navegar entre los mensajes mediante una interfaz en java que mandara los mensajes al arduino.
-A esta practica se le anexo una funcionalidad extra la cual es sensor ultrasonico HC-SR04 en la cual se medira la distancia
+A esta practica se le anexo una funcionalidad extra la cual es **sensor ultrasonico HC-SR04** en la cual se medira la distancia
 de un objeto a otro.
 
 Abra el enlace para ver el esquema  de reloj
@@ -24,7 +25,7 @@ Abra el enlace para ver el esquema de temperatura
 
 Abra el enlace para ver el esquema de distancia
 
-<a href="https://1drv.ms/u/s!Aizy46b43OzzgizJpLJ2l6y2NLbh"><img src="https://1drv.ms/u/s!Aizy46b43OzzgizJpLJ2l6y2NLbh" /></a>
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgioxUhIaaqNgvUIW"><img src="https://1drv.ms/u/s!Aizy46b43OzzgioxUhIaaqNgvUIW" /></a>
 
 En la actualidad software libre es consecuencia del método de la ética ya que por elección manifiesta de su autor puede ser copiado, 
 estudiado, modificado, utilizado libremente con cualquier fin y redistribuido con o sin cambios o mejoras. En esta practica se
