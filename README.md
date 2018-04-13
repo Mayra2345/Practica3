@@ -16,7 +16,7 @@ de un objeto a otro.
 
 Abra el enlace para ver el esquema  de reloj
 
-<a href="https://1drv.ms/u/s!Aizy46b43Ozzghdij0VhXre7lOof"><img src="https://1drv.ms/u/s!Aizy46b43Ozzgi4jsi2oOLisTZjH" /></a>
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgizJpLJ2l6y2NLbh"><img src="https://1drv.ms/u/s!Aizy46b43OzzgizJpLJ2l6y2NLbh" /></a>
 
 Abra el enlace para ver el esquema de temperatura
 
