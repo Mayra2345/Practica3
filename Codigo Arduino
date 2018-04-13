@@ -1,0 +1,551 @@
+// libreria para el RTC
+#include <Wire.h>
+#include "RTClib.h"
+// ----- libreria para pantalla---
+#include <LiquidCrystal.h>
+//pines del arduino al LCD (RS E D4 D5 D6 D7) RESPECTIVAMENTE
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+//--- variables para el programa general------
+// la variable input nos permite navegar entre los menus
+// dependiendo de la constante que nos regrese del progama JAVA
+int input;
+// ------ variables  para  MENSAJE --------
+String Mensaje = "" ;
+//------- variables para TEMPERATURA----------
+// Variable para almacenar el valor obtenido del sensor (0 a 1023)
+float tempC;
+// Variable del pin de entrada del sensor (A0)
+int pinLM35 = 0; 
+// -------- variables para RELOJ ----------
+RTC_DS3231 rtc;
+// arreglo de los nombres de los dias para imprimirlos en la LCD
+char daysOfTheWeek[7][12] = {"Sund", "Mond", "Tuesd", "Wedn", "Thur", "Frid", "Satu"};
+// ------ variables para DISTANCIA ------------
+// variable que guardara la distancia
+long dis; 
+// variable que guardara el tiempo
+long tiem;
+// variable para el led1 en el PIN9
+int led1 = 9;
+
+// -------------- INICIO DEL METODO SETUP ---------
+//               SOLO SE EJECUTA UNA VEZ 
+void setup() {
+  // ---------- GENERAL -------------
+#ifndef ESP8266
+  while (!Serial);
+#endif
+  Serial.begin(9600);
+  // tiempo de espera para consola
+  delay(3000); 
+  // Definimos la LCD con dimension 2x16 
+  lcd.begin(16, 2);
+  lcd.clear();
+  // ------------- MENSAJES---------
+  //Se declara el pin 10 como salida
+  pinMode(10 , OUTPUT);
+  // envio de la informacion del pin10
+  digitalWrite(10 , HIGH);
+  //--------------- RELOJ ----------
+  //// se verifica si el modulo rtc esta en funcionamiento, 
+  //de lo contrario, se imprime: no se esta ejecutando la conexion
+  if (! rtc.begin()) {
+    Serial.println("NO SE PUDO CONECTAR");
+    lcd.println("NO SE ESTA EJECUTANDO LA CONEXION!");
+    delay(10000);
+    while (1);
+  }
+  // si esta en funcionamiento 
+  if (rtc.lostPower()) {
+    // //esta funcion  envia al RTC la fecha y la hora
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+      // Definimos la LCD con dimension 2x16 
+    lcd.begin(16, 2);
+    lcd.clear();
+  }
+  //--------------- DISTANCIA-------
+  //salida del pulso generado por el sensor ultrasónico 10-13
+  pinMode(13, OUTPUT);
+ //entrada del pulso generado por el sensor ultrasónico 9-10
+   pinMode(10, INPUT);
+//alarma de la distancia(encenderá el led) 11-9
+  pinMode(9, OUTPUT);
+  //--------------- TEMPERATURA-----
+  // Variable para almacenar el valor obtenido del sensor (0 a 1023)
+   float tempC;
+   // Variable del pin de entrada del sensor (A0)
+int pinLM35 = 0;
+}
+
+void loop() {
+  // si la conexion es mayor a 0 es decir si se da la conexion
+  if (Serial.available() > 0) {
+    // Se lee el dato que tiene la conexion
+    input = Decimal_to_ASCII(Serial.read());
+
+    //------------- TEMPERATURA ------------
+    // Si el dato es igual a 1
+    if (input == '1') {
+      // se manda a imprimir en la LCD linea 0 columna 0
+      lcd.setCursor(0,0);
+      // el siguiente letrero:
+      lcd.print("Temperatura");
+      // el valor que tenga pinLM35 sera igual a la variable tempC
+      tempC = analogRead(pinLM35);
+      // Calculamos la temperatura con la fórmula
+      tempC = (1.1 * tempC * 100.0 ) / 1024.0;
+      // se manda imprimir en la LCD 
+      lcd.setCursor(0, 1);
+      // el siguiente letrero:
+      lcd.print("          C");
+      // tiempo de espera 
+      delay(1000);
+      // se manda a imprimir en la LCD
+      lcd.setCursor(5, 1);
+      // el siguiente letrero:
+      lcd.print(tempC);
+      // Envia el dato al puerto serial
+      Serial.print(tempC);
+      // Salto de línea
+      Serial.print("\n");
+
+      // Esperamos un tiempo para repetir el loop
+      delay(1000);
+
+    }
+    //---------------- HORA -----------
+    // si el dato es igual a 2
+    else if (input == '2') {
+      //obtiene datos del modulo RTC
+      DateTime now = rtc.now();
+      // Definimos la LCD con dimension 2x16 
+      lcd.begin(16, 2);
+      // se manda imprimir a la LCD el AÑO
+      lcd.print(now.year(), DEC);
+      lcd.print('/');
+      // se manda imprimir a consola el AÑO
+      Serial.print(now.year(), DEC);
+      Serial.print('/');
+      // se manda imprimir a LCD el MES
+      lcd.print(now.month(), DEC);
+      lcd.print('/');
+      // se manda imprimir a consola el MES
+      Serial.print(now.month(), DEC);
+      Serial.print('/');
+      // se manda imprimir a LCD el DIA
+      lcd.print(now.day(), DEC);
+      lcd.print('/');
+      // se manda imprimir a consola el DIA
+      Serial.print(now.day(), DEC);
+      Serial.print(" (");
+      // se manda imprimir a consola el arreglo de nombres
+      Serial.print(daysOfTheWeek[now.dayOfTheWeek()]);
+      lcd.print('(');
+      // se manda imprimir a la LCD el arreglo de nombres
+      lcd.print(daysOfTheWeek[now.dayOfTheWeek()]);
+      lcd.print(')');
+      Serial.print(") ");
+      // se define la LCD en 0,1
+      lcd.setCursor(0, 1);
+      // se manda imprimir a consola la hora
+      Serial.print(now.hour(), DEC);
+      Serial.print(':');
+      // se manda imprimir a LCD LA HORA
+      lcd.print(now.hour(), DEC);
+      lcd.print(':');
+      // se manda imprimir a consola LOS MINUTOS
+      Serial.print(now.minute(), DEC);
+      Serial.print(':');
+      // se manda imprimir a LCD ,MINUTOS
+      lcd.print(now.minute(), DEC);
+      lcd.print(':');
+      // se manda imprimir a consola LOS SEGUNDOS
+      Serial.print(now.second(), DEC);
+      Serial.println();
+      // se manda imprimir a LCD LOS SEGUNDOS
+      lcd.print(now.second(), DEC);
+      // SALTO DE LINEA EN CONSOLA
+      Serial.println();
+      // Esperamos un tiempo para repetir el loop
+      delay(1000);
+    }
+
+    //------------- DISTANCIA ------------
+    // si el dato es igual a 3 
+    else if (input == '3') {
+      // definimos la pantalla como 16X2
+      lcd.begin(16, 2);
+      // mandamos a imprimir el siguiente letrero
+      lcd.print("Distancia");
+      //recibimiento del pulso.
+      digitalWrite(13, LOW); 
+      delayMicroseconds(10);
+      //envió del pulso.
+      digitalWrite(13, HIGH);
+      delayMicroseconds(10);
+      //fórmula para medir el pulso entrante.
+      tiem = pulseIn(10, HIGH); 
+      //fórmula para calcular la distancia del sensor ultrasónico.
+      dis =  int(0.017 * tiem); 
+      // se define la posicion del mensaje      
+      lcd.setCursor(10, 0);
+      // se manda a imprimir la distancia
+      lcd.print(dis);
+      lcd.print("cm");
+      // tiempo de espera para repetir el ciclo
+      delay(500);
+      // PARA LA FUNCIONALIDAD DEL LED
+      //comparativo para la alarma se ingresa la distancia  en la que encenderá o apagara.
+      // si la distancia es menor a 10
+      if (dis < 10) { 
+        // el Led se enciende
+        digitalWrite(9, HIGH);
+      }
+      else
+      { // si la distancia es mayor a 10 el led se apaga
+        digitalWrite(9, LOW);
+      }
+      // imprimir en consola
+      Serial.println("LA DISTANCIA ES:");
+      Serial.println(dis);
+      Serial.println("cm");
+    }
+    //--------------- MENSAJES -------------
+    else {
+      // variable para los caracteres
+      int caracteres = 0;
+      // si existe la conexion
+      while (Serial.available() > 0) {
+        // la variable mensaje toma el dato que se envio
+        Mensaje = Mensaje + Decimal_to_ASCII(Serial.read());
+      }
+      // los datos que se enviaron de JAVA se guardan en la variable caracteres
+      caracteres = Mensaje.length();
+      // si los caracteres son mayor a 16
+      if (caracteres > 16) {
+        // si el mensaje no es vacio
+        if (Mensaje != "") {
+          lcd.clear();
+          // mandamos imprimir el mensaje a la LCD
+          lcd.print(Mensaje.substring(0, 16));
+          // posicion del mensaje en la LCD
+          lcd.setCursor(0, 1);
+          //imprimir el mensaje
+          lcd.print(Mensaje.substring(16, caracteres));
+
+        }
+
+      } else {si no
+      // si el mensaje no es vacio
+        if ( Mensaje != "") {
+          lcd.clear();
+          // se manda a imprimir el mensaje
+          lcd.print(Mensaje);
+        }
+      }
+      // tiempo para volver a repetir el LOOP
+      delay(1000);
+      Mensaje = "";
+      
+
+
+    }
+  }
+}
+
+//----------- METODO INDEPENDIENTE ( FUERA DEL LOOP PARA CODIGO DE  MENSAJES---------------
+char Decimal_to_ASCII(int entrada) {
+
+  char salida = ' ' ;
+  // Todos los numeros,letras y caracteres que se utilizaran
+  switch (entrada) {
+    case 32:
+      salida = ' ';
+      break;
+    case 33:
+      salida = '!';
+      break;
+    case 34:
+      salida = '"';
+      break;
+    case 35:
+      salida = '#';
+      break;
+    case 36:
+      salida = '$';
+      break;
+    case 37:
+      salida = '%';
+      break;
+    case 38:
+      salida = '&';
+      break;
+    case 39:
+      salida = ' ';
+      break;
+    case 40:
+      salida = '(';
+      break;
+    case 41:
+      salida = ')';
+      break;
+    case 42:
+      salida = '*';
+      break;
+    case 43:
+      salida = '+';
+      break;
+    case 44:
+      salida = ',';
+      break;
+    case 45:
+      salida = '-';
+      break;
+    case 46:
+      salida = '.';
+      break;
+    case 47:
+      salida = '/';
+      break;
+    case 48:
+      salida = '0';
+      break;
+    case 49:
+      salida = '1';
+      break;
+    case 50:
+      salida = '2';
+      break;
+    case 51:
+      salida = '3';
+      break;
+    case 52:
+      salida = '4';
+      break;
+    case 53:
+      salida = '5';
+      break;
+    case 54:
+      salida = '6';
+      break;
+    case 55:
+      salida = '7';
+      break;
+    case 56:
+      salida = '8';
+      break;
+    case 57:
+      salida = '9';
+      break;
+    case 58:
+      salida = ':';
+      break;
+    case 59:
+      salida = ';';
+      break;
+    case 60:
+      salida = '<';
+      break;
+    case 61:
+      salida = '=';
+      break;
+    case 62:
+      salida = '>';
+      break;
+    case 63:
+      salida = '?';
+      break;
+    case 64:
+      salida = '@';
+      break;
+    case 65:
+      salida = 'A';
+      break;
+    case 66:
+      salida = 'B';
+      break;
+    case 67:
+      salida = 'C';
+      break;
+    case 68:
+      salida = 'D';
+      break;
+    case 69:
+      salida = 'E';
+      break;
+    case 70:
+      salida = 'F';
+      break;
+    case 71:
+      salida = 'G';
+      break;
+    case 72:
+      salida = 'H';
+      break;
+    case 73:
+      salida = 'I';
+      break;
+    case 74:
+      salida = 'J';
+      break;
+    case 75:
+      salida = 'K';
+      break;
+    case 76:
+      salida = 'L';
+      break;
+    case 77:
+      salida = 'M';
+      break;
+    case 78:
+      salida = 'N';
+      break;
+    case 79:
+      salida = 'O';
+      break;
+    case 80:
+      salida = 'P';
+      break;
+    case 81:
+      salida = 'Q';
+      break;
+    case 82:
+      salida = 'R';
+      break;
+    case 83:
+      salida = 'S';
+      break;
+    case 84:
+      salida = 'T';
+      break;
+    case 85:
+      salida = 'U';
+      break;
+    case 86:
+      salida = 'V';
+      break;
+    case 87:
+      salida = 'W';
+      break;
+    case 88:
+      salida = 'X';
+      break;
+    case 89:
+      salida = 'Y';
+      break;
+    case 90:
+      salida = 'Z';
+      break;
+    case 91:
+      salida = '[';
+      break;
+    case 92:
+      salida = ' ';
+      break;
+    case 93:
+      salida = ']';
+      break;
+    case 94:
+      salida = '^';
+      break;
+    case 95:
+      salida = '_';
+      break;
+    case 96:
+      salida = '`';
+      break;
+    case 97:
+      salida = 'a';
+      break;
+    case 98:
+      salida = 'b';
+      break;
+    case 99:
+      salida = 'c';
+      break;
+    case 100:
+      salida = 'd';
+      break;
+    case 101:
+      salida = 'e';
+      break;
+    case 102:
+      salida = 'f';
+      break;
+    case 103:
+      salida = 'g';
+      break;
+    case 104:
+      salida = 'h';
+      break;
+    case 105:
+      salida = 'i';
+      break;
+    case 106:
+      salida = 'j';
+      break;
+    case 107:
+      salida = 'k';
+      break;
+    case 108:
+      salida = 'l';
+      break;
+    case 109:
+      salida = 'm';
+      break;
+    case 110:
+      salida = 'n';
+      break;
+    case 111:
+      salida = 'o';
+      break;
+    case 112:
+      salida = 'p';
+      break;
+    case 113:
+      salida = 'q';
+      break;
+    case 114:
+      salida = 'r';
+      break;
+    case 115:
+      salida = 's';
+      break;
+    case 116:
+      salida = 't';
+      break;
+    case 117:
+      salida = 'u';
+      break;
+    case 118:
+      salida = 'v';
+      break;
+    case 119:
+      salida = 'w';
+      break;
+    case 120:
+      salida = 'x';
+      break;
+    case 121:
+      salida = 'y';
+      break;
+    case 122:
+      salida = 'z';
+      break;
+    case 123:
+      salida = '{';
+      break;
+    case 124:
+      salida = '|';
+      break;
+    case 125:
+      salida = '}';
+      break;
+    case 126:
+      salida = '~';
+      break;
+  }
+  return salida;
+}  // fin del Decimal_to_ASCCI
+
