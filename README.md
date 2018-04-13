@@ -1,6 +1,6 @@
-**# Practica3
+**# Practica3**
 
-Practica 3 "Arduino y LCD con Conexion Serial"**
+**Practica 3 "Arduino y LCD con Conexion Serial"**
 
 Arduino, es una poderosa plataforma de hardware libre, ideal para poyectos de electrónica que van desde el encendido de un
 LED hasta un complejo sistema de domótica para controlar una casa entera.
@@ -9,7 +9,7 @@ Por lo tanto en esta practica  nuestra meta es la siguiente:
 
 META :En Arduino con un LCD desplegar:
 
-  +La temperatura
+  + La temperatura
   + La hora
   + Mensajes
 
