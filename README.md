@@ -1,4 +1,5 @@
 **# Practica3
+
 Practica 3 "Arduino y LCD con Conexion Serial"**
 
 Arduino, es una poderosa plataforma de hardware libre, ideal para poyectos de electrónica que van desde el encendido de un
@@ -7,6 +8,7 @@ Java, uno de los lenguajes de programación más extendidos del mundo se puede u
 Por lo tanto en esta practica  nuestra meta es la siguiente:
 
 META :En Arduino con un LCD desplegar:
+
   +La temperatura
   + La hora
   + Mensajes
