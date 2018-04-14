@@ -35,9 +35,19 @@ Abra el enlace para ver el esquema de distancia
 
 **RESULTADOS**
 
-+  Arduino
++  Temperatura
 
 <a href="hhttps://1drv.ms/f/s!Aizy46b43OzzgjgetMF0TMzufHeL"><img src="https://1drv.ms/f/s!Aizy46b43OzzgjgetMF0TMzufHeL" /></a>
+
++ Hora
+
++ Mensajes
+
++ Distancia
+
+
+
+
 
 
 + Java
