@@ -1,3 +1,4 @@
+
 **# Practica3**
 
 **Practica 3 "Arduino y LCD con Conexion Serial"**
@@ -17,6 +18,8 @@ El usuario podra navegar entre los mensajes mediante una interfaz en java que ma
 A esta practica se le anexo una funcionalidad extra la cual es **sensor ultrasonico HC-SR04** en la cual se medira la distancia
 de un objeto a otro.
 
+**DESARROLLO**
+
 Abra el enlace para ver el esquema  de reloj
 
 <a href="https://1drv.ms/u/s!Aizy46b43OzzgizJpLJ2l6y2NLbh"><img src="https://1drv.ms/u/s!Aizy46b43OzzgizJpLJ2l6y2NLbh" /></a>
@@ -30,6 +33,17 @@ Abra el enlace para ver el esquema de distancia
 
 <a href="https://1drv.ms/u/s!Aizy46b43OzzgioxUhIaaqNgvUIW"><img src="https://1drv.ms/u/s!Aizy46b43OzzgioxUhIaaqNgvUIW" /></a>
 
+**RESULTADOS**
+
++  Arduino
+
+<a href="hhttps://1drv.ms/f/s!Aizy46b43OzzgjgetMF0TMzufHeL"><img src="https://1drv.ms/f/s!Aizy46b43OzzgjgetMF0TMzufHeL" /></a>
+
+
++ Java
+
+
+**SOFTWARE LIBRE**
 En la actualidad software libre es consecuencia del método de la ética ya que por elección manifiesta de su autor puede ser copiado, 
 estudiado, modificado, utilizado libremente con cualquier fin y redistribuido con o sin cambios o mejoras. En esta practica se
 utilizaron los siguientes:
