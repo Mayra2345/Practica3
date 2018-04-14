@@ -33,27 +33,74 @@ Abra el enlace para ver el esquema de distancia
 
 <a href="https://1drv.ms/u/s!Aizy46b43OzzgioxUhIaaqNgvUIW"><img src="https://1drv.ms/u/s!Aizy46b43OzzgioxUhIaaqNgvUIW" /></a>
 
-**RESULTADOS**
 
+
+**------------------------- RESULTADOS-----------------------------**
+
+
+**ARDUINO*
 +  Temperatura
 
-<a href="hhttps://1drv.ms/f/s!Aizy46b43OzzgjgetMF0TMzufHeL"><img src="https://1drv.ms/f/s!Aizy46b43OzzgjgetMF0TMzufHeL" /></a>
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgjN_78nQsKaLu97Q"><img src="https://1drv.ms/u/s!Aizy46b43OzzgjN_78nQsKaLu97Q" /></a>
 
 + Hora
 
+
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgjbiPjK3UgCDaqui"><img src="https://1drv.ms/u/s!Aizy46b43OzzgjbiPjK3UgCDaqui" /></a>
+
+
 + Mensajes
+
+
+<a href="https://1drv.ms/u/s!Aizy46b43Ozzgje4grAfO80jrFN4"><img src="https://1drv.ms/u/s!Aizy46b43Ozzgje4grAfO80jrFN4" /></a>
+
 
 + Distancia
 
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgjSJHwUFRNEg_uCF"><img src="https://1drv.ms/u/s!Aizy46b43OzzgjSJHwUFRNEg_uCF" /></a>
+
+
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgjV6zaTmcYEvCodl"><img src="https://1drv.ms/u/s!Aizy46b43OzzgjV6zaTmcYEvCodl" /></a>
+
+
++ **JAVA**
++ Menu principal
+
+<a href="https://1drv.ms/u/s!Aizy46b43Ozzgj7jLlfsU1dpSem-"><img src="https://1drv.ms/u/s!Aizy46b43Ozzgj7jLlfsU1dpSem-" /></a>
+
+
++ Temperatura
+
+
+<a href="https://1drv.ms/u/s!Aizy46b43Ozzgj2JGH2e_qySPFM2"><img src="https://1drv.ms/u/s!Aizy46b43Ozzgj2JGH2e_qySPFM2" /></a>
+
+
++ Hora
+
+<a href="https://1drv.ms/u/s!Aizy46b43Ozzgjy6qeT3bPf2fIvm"><img src="https://1drv.ms/u/s!Aizy46b43Ozzgjy6qeT3bPf2fIvm" /></a>
+
+
+
++ Distancia
+
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgjpN5GdGmhvCGfky"><img src="https://1drv.ms/u/s!Aizy46b43OzzgjpN5GdGmhvCGfky" /></a>
+
+
++ Mensajes
+
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgjshR-UlQja-zyGr"><img src="https://1drv.ms/u/s!Aizy46b43OzzgjshR-UlQja-zyGr" /></a>
+
+
+
++ Conexion Exitosa
+
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgjlSC40tesGZlOND"><img src="https://1drv.ms/u/s!Aizy46b43OzzgjlSC40tesGZlOND" /></a>
 
 
 
 
 
-+ Java
-
-
-**SOFTWARE LIBRE**
+**---------------------------- SOFTWARE LIBRE ----------------------------**
 En la actualidad software libre es consecuencia del método de la ética ya que por elección manifiesta de su autor puede ser copiado, 
 estudiado, modificado, utilizado libremente con cualquier fin y redistribuido con o sin cambios o mejoras. En esta practica se
 utilizaron los siguientes:
