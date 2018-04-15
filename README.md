@@ -20,10 +20,18 @@ de un objeto a otro.
 
 **DESARROLLO**
 
+Abra para ver el esquema completo ( Protoboard)
+
+<a href="https://1drv.ms/u/s!Aizy46b43OzzgkBFhvFXwpuxp417"><img src="https://1drv.ms/u/s!Aizy46b43OzzgkBFhvFXwpuxp417" /></a>
+
+Abra para ver el esquema completo ( Esquematico)
+<a href="https://1drv.ms/u/s!Aizy46b43Ozzgj9Zqw9_YMGvi7vR"><img src="https://1drv.ms/u/s!Aizy46b43Ozzgj9Zqw9_YMGvi7vR" /></a>
+
+
 Abra el enlace para ver el esquema  de reloj
 
 <a href="https://1drv.ms/u/s!Aizy46b43OzzgizJpLJ2l6y2NLbh"><img src="https://1drv.ms/u/s!Aizy46b43OzzgizJpLJ2l6y2NLbh" /></a>
-![alt text](https://1drv.ms/u/s!Aizy46b43OzzgizJpLJ2l6y2NLbh)
+
 
 Abra el enlace para ver el esquema de temperatura
 
@@ -101,6 +109,8 @@ Abra el enlace para ver el esquema de distancia
 
 
 **---------------------------- SOFTWARE LIBRE ----------------------------**
+
+
 En la actualidad software libre es consecuencia del método de la ética ya que por elección manifiesta de su autor puede ser copiado, 
 estudiado, modificado, utilizado libremente con cualquier fin y redistribuido con o sin cambios o mejoras. En esta practica se
 utilizaron los siguientes:
