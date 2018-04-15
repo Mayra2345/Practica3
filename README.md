@@ -25,6 +25,8 @@ Abra para ver el esquema completo ( Protoboard)
 <a href="https://1drv.ms/u/s!Aizy46b43OzzgkBFhvFXwpuxp417"><img src="https://1drv.ms/u/s!Aizy46b43OzzgkBFhvFXwpuxp417" /></a>
 
 Abra para ver el esquema completo ( Esquematico)
+
+
 <a href="https://1drv.ms/u/s!Aizy46b43Ozzgj9Zqw9_YMGvi7vR"><img src="https://1drv.ms/u/s!Aizy46b43Ozzgj9Zqw9_YMGvi7vR" /></a>
 
 
